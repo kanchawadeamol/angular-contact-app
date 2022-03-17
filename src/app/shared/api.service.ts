@@ -9,7 +9,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   // url = 'http://localhost:3000/contacts/';
-  url = 'http://localhost:3000/contacts/';
+  url = 'https://kanchawadeamol.github.io/angular-contact-app/';
 
   addContact(contactData: any) {
     return this.http.post<any>(this.url, contactData).pipe(
