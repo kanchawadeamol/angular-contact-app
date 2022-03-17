@@ -1,0 +1,57 @@
+<h1>{{ formTitle }}</h1>
+<form [formGroup]="contactFormValue" class="form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input
+      formControlName="name"
+      matInput
+      placeholder="Enter Your Name"
+      required
+    />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input
+      formControlName="email"
+      matInput
+      placeholder="Enter Your Email"
+      required
+    />
+    <mat-icon matSuffix>mail</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Phone</mat-label>
+    <input
+      formControlName="phone"
+      matInput
+      placeholder="Enter Your Phone Number"
+      required
+    />
+    <mat-icon matSuffix>phone</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input
+      formControlName="address"
+      matInput
+      placeholder="Enter Your Address"
+      required
+    />
+    <mat-icon matSuffix>navigation</mat-icon>
+  </mat-form-field>
+  <br />
+  <div>
+    <button mat-raised-button color="primary" (click)="btnAction()">
+      {{ actionBtn }}
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      style="margin-left: 5px"
+      mat-dialog-close
+    >
+      Cancel
+    </button>
+  </div>
+</form>

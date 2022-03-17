@@ -1,0 +1,40 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+table {
+  width: 95%;
+  border-spacing: 0px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 5px;
+}
+
+thead tr {
+  background-color: #eccccc;
+}
+
+th {
+  padding: 12px 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.contact-data-table .mat-icon {
+  background-color: #eccccc;
+  padding: 5px;
+  margin: 4px;
+  border-radius: 5px;
+}

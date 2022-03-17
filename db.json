@@ -1,0 +1,36 @@
+{
+  "contacts": [
+    {
+      "id": 1643368585132,
+      "name": "Amey Kadam",
+      "email": "amey.kadam@gmail.com",
+      "phone": "7039396266",
+      "address": "Wadala, Mumbai",
+      "date": "2022-01-27T12:55:00.808Z"
+    },
+    {
+      "id": 1643374500808,
+      "name": "Ravina ",
+      "email": "ravina@gmail.com",
+      "phone": "9056865236",
+      "address": "Diva, Mumbai",
+      "date": "2022-01-28T12:55:00.808Z"
+    },
+    {
+      "id": 1643614807365,
+      "name": "Nikhil",
+      "email": "nikhil@gmail.com",
+      "phone": "9263586263",
+      "address": "Nagpur",
+      "date": "2022-01-31T07:40:07.365Z"
+    },
+    {
+      "id": 1647425379514,
+      "name": "Amol Kanchawade",
+      "email": "kanchawadeamol18@gmail.com",
+      "phone": "7039396266",
+      "address": "Mumbai, Maharashtra",
+      "date": "2022-03-16T10:09:39.514Z"
+    }
+  ]
+}
