@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

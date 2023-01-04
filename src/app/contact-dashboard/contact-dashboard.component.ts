@@ -6,6 +6,7 @@ import { ApiService } from '../shared/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact-dashboard',
@@ -17,6 +18,7 @@ export class ContactDashboardComponent implements OnInit {
   contactData!: any;
 
   displayedColumns: string[] = [
+    'sr.no',
     'id',
     'name',
     'email',
@@ -30,7 +32,11 @@ export class ContactDashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public dialog: MatDialog, private api: ApiService) {}
+  constructor(
+    public dialog: MatDialog,
+    private api: ApiService,
+    private snackbar: MatSnackBar
+  ) {}
 
   openAddDialog() {
     this.dialog
@@ -79,11 +85,15 @@ export class ContactDashboardComponent implements OnInit {
   deletContact(id: number) {
     this.api.deleteContact(id).subscribe(
       (res) => {
-        alert('Contact Deleted Successfully');
+        this.snackbar.open('Contact Deleted Successfully', '', {
+          duration: 5000,
+        });
         this.getAllContacts();
       },
       (error) => {
-        alert('Something went wrong');
+        this.snackbar.open('Something went wrong', '', {
+          duration: 5000,
+        });
       }
     );
   }

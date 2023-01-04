@@ -5,6 +5,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContactModel } from '../contact-dashboard/contact-dashboard.model';
 import { ApiService } from '../shared/api.service';
 
@@ -18,20 +19,22 @@ export class AddContactFormComponent implements OnInit {
   contactModelObj: ContactModel = new ContactModel();
   actionBtn: string = 'Add';
   formTitle: string = 'Add Contact';
+  phonePattern: string = '^((\\+91-?)|0)?[0-9]{10}$';
 
   constructor(
     public dialogRef: MatDialogRef<AddContactFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public editdata: any,
+    @Inject(MAT_DIALOG_DATA) public editdata: ContactModel,
     private formbuilder: FormBuilder,
-    private api: ApiService
+    private api: ApiService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.contactFormValue = this.formbuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      address: ['', Validators.required],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
+      address: ['', [Validators.required]],
     });
 
     if (this.editdata) {
@@ -65,12 +68,16 @@ export class AddContactFormComponent implements OnInit {
 
       this.api.addContact(this.contactModelObj).subscribe(
         (res) => {
-          alert('Contact Added Successfully');
+          this.snackbar.open('Contact Added Successfully', '', {
+            duration: 5000,
+          });
           this.contactFormValue.reset();
           this.dialogRef.close('add');
         },
         (error) => {
-          alert('Something went wrong');
+          this.snackbar.open('Something went wrong', '', {
+            duration: 5000,
+          });
         }
       );
     }
@@ -89,12 +96,18 @@ export class AddContactFormComponent implements OnInit {
 
       this.api.updateContact(this.contactModelObj, this.editdata.id).subscribe(
         (res) => {
-          alert('Contact Updated Successfully');
+          // alert('Contact Updated Successfully');
+          this.snackbar.open('Contact Updated Successfully', '', {
+            duration: 5000,
+          });
           this.contactFormValue.reset();
           this.dialogRef.close('update');
         },
         (error) => {
-          alert('Something went wrong');
+          // alert('Something went wrong');
+          this.snackbar.open('Something went wrong', '', {
+            duration: 5000,
+          });
         }
       );
     }

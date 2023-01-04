@@ -7,6 +7,14 @@
   margin: auto;
 }
 
+.cdk-overlay-dark-backdrop {
+  display: none;
+}
+
+.cdk-column-id {
+  display: none;
+}
+
 table {
   width: 95%;
   border-spacing: 0px;

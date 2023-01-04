@@ -9,6 +9,9 @@
       required
     />
     <mat-icon matSuffix>person</mat-icon>
+    <mat-error *ngIf="contactFormValue.controls['name'].invalid">
+      {{ "Name is required" }}
+    </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
@@ -19,16 +22,31 @@
       required
     />
     <mat-icon matSuffix>mail</mat-icon>
+    <mat-error *ngIf="contactFormValue.controls['email'].invalid">
+      {{
+        contactFormValue.controls["email"].hasError("required")
+          ? "Email is required"
+          : "Please enter valid email"
+      }}
+    </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Phone</mat-label>
     <input
       formControlName="phone"
       matInput
+      [pattern]="phonePattern"
       placeholder="Enter Your Phone Number"
       required
     />
     <mat-icon matSuffix>phone</mat-icon>
+    <mat-error *ngIf="contactFormValue.controls['phone'].invalid">
+      {{
+        contactFormValue.controls["phone"].hasError("required")
+          ? "Phone is required"
+          : "Please enter valid phone number"
+      }}
+    </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Address</mat-label>
@@ -39,10 +57,18 @@
       required
     />
     <mat-icon matSuffix>navigation</mat-icon>
+    <mat-error *ngIf="contactFormValue.controls['address'].invalid">
+      {{ "Address is required" }}
+    </mat-error>
   </mat-form-field>
   <br />
   <div>
-    <button mat-raised-button color="primary" (click)="btnAction()">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="btnAction()"
+      [disabled]="contactFormValue.invalid"
+    >
       {{ actionBtn }}
     </button>
     <button
